@@ -1,0 +1,57 @@
+{
+  "name": "node_express_blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "rimraf ./dist && babel -d ./dist ./src -s && node dist/index.js",
+    "dev": "nodemon --exec babel-node server.js",
+    "lint:js": "eslint ./src",
+    "lint-staged": "link-staged"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": ["airbnb-base", "prettier"],
+    "env": {
+      "node": true
+    }
+  },
+  "link-staged": {
+    "*.js": "eslint"
+  },
+  "pre-commit": "link-staged",
+  "babel": {
+    "presets": [
+      "latest",
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-latest": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "mongoose": "^4.11.12",
+    "morgan": "^1.8.2",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "eslint": "^4.7.2",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "lint-staged": "^4.2.2",
+    "pre-commit": "^1.2.2"
+  }
+}
